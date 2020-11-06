@@ -72,21 +72,31 @@ public class UrlService implements RepositoryService<Url>, Randomizer<String> {
 
     @Override
     public boolean update(Url some) {
-        return false;
+        boolean result = false;
+        if (urlRepository.findById(some.getId()).isPresent()) {
+            urlRepository.save(some);
+            result = true;
+        }
+        return result;
     }
 
     @Override
     public boolean delete(Url some) {
-        return false;
+        boolean result = false;
+        if (urlRepository.findById(some.getId()).isPresent()) {
+            urlRepository.delete(some);
+            result = true;
+        }
+        return result;
     }
 
     @Override
     public Optional<Url> findById(int id) {
-        return Optional.empty();
+        return urlRepository.findById(id);
     }
 
     @Override
     public List<Url> findAll() {
-        return null;
+        return urlRepository.findAll();
     }
 }
