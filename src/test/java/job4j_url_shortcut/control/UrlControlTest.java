@@ -54,7 +54,7 @@ class UrlControlTest {
 
     @Test
     void WhenWeHave() throws Exception {
-        when(urlRepository.findByUrl(anyString())).thenReturn(Optional.of(new Url(0,"url","code")));
+        when(urlRepository.findByUrl(anyString())).thenReturn(Optional.of(new Url(0,"url","code",0)));
         mockMvc.perform(post("/url/convert")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"url\": \"https://job4j.ru/TrackStudio/task/8993?thisframe=true\"}"))

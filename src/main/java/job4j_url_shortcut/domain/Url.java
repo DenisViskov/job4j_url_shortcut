@@ -18,14 +18,17 @@ public class Url {
     private String url;
     @Column(name = "code")
     private String code;
+    @Column(name = "total")
+    private long total;
 
     public Url() {
     }
 
-    public Url(int id, String url, String code) {
+    public Url(int id, String url, String code, long total) {
         this.id = id;
         this.url = url;
         this.code = code;
+        this.total = total;
     }
 
     public int getId() {
@@ -52,18 +55,27 @@ public class Url {
         this.code = code;
     }
 
+    public long getTotal() {
+        return total;
+    }
+
+    public void setTotal(long total) {
+        this.total = total;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Url url1 = (Url) o;
         return id == url1.id &&
+                total == url1.total &&
                 Objects.equals(url, url1.url) &&
                 Objects.equals(code, url1.code);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, url, code);
+        return Objects.hash(id, url, code, total);
     }
 }

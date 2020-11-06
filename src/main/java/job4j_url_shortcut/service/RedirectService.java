@@ -15,10 +15,12 @@ import java.util.Optional;
 @Service
 public class RedirectService implements Redirect<String> {
     private final UrlRepository repository;
+    private final Statistic statisticService;
 
     @Autowired
-    public RedirectService(UrlRepository repository) {
+    public RedirectService(UrlRepository repository, Statistic statisticService) {
         this.repository = repository;
+        this.statisticService = statisticService;
     }
 
     @Override
@@ -29,6 +31,7 @@ public class RedirectService implements Redirect<String> {
             result = Optional.of(urlBox
                     .get()
                     .getUrl());
+            statisticService.incrementTotal(urlBox.get());
         }
         return result;
     }

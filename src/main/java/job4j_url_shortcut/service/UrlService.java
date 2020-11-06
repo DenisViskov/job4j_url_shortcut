@@ -2,6 +2,7 @@ package job4j_url_shortcut.service;
 
 import job4j_url_shortcut.domain.Site;
 import job4j_url_shortcut.domain.Url;
+import job4j_url_shortcut.repository.SiteRepository;
 import job4j_url_shortcut.repository.UrlRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,12 +21,12 @@ import java.util.Random;
 @Service
 public class UrlService implements Repository<Url>, Randomizer<String> {
     private final UrlRepository urlRepository;
-    private final Registration siteRepositoryService;
+    private final SiteRepository siteRepository;
 
     @Autowired
-    public UrlService(UrlRepository urlRepository, Registration siteRepositoryService) {
+    public UrlService(UrlRepository urlRepository, SiteRepository siteRepository) {
         this.urlRepository = urlRepository;
-        this.siteRepositoryService = siteRepositoryService;
+        this.siteRepository = siteRepository;
     }
 
     @Override
@@ -47,14 +48,15 @@ public class UrlService implements Repository<Url>, Randomizer<String> {
             some.setId(url.getId());
             some.setUrl(url.getUrl());
             some.setCode(url.getCode());
+            some.setTotal(url.getTotal());
         }, () -> {
             String siteName = nameImport(some.getUrl());
-            Site site = (Site) siteRepositoryService.findBySiteName(siteName).get();
+            Site site = (Site) siteRepository.findBySite(siteName).get();
             some.setId(0);
             some.setCode(getRandom());
             urlRepository.save(some);
             site.addUrl(some);
-            siteRepositoryService.update(site);
+            siteRepository.save(site);
         });
         return some;
     }
