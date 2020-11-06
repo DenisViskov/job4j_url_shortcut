@@ -3,6 +3,7 @@ package job4j_url_shortcut.control;
 import job4j_url_shortcut.Job4jUrlShortcutApplication;
 import job4j_url_shortcut.domain.Site;
 import job4j_url_shortcut.domain.Url;
+import job4j_url_shortcut.repository.SiteRepository;
 import job4j_url_shortcut.repository.UrlRepository;
 import job4j_url_shortcut.service.Registration;
 import org.junit.jupiter.api.Test;
@@ -32,12 +33,12 @@ class UrlControlTest {
     @MockBean
     private UrlRepository urlRepository;
     @MockBean
-    private Registration siteRepositoryService;
+    private SiteRepository siteRepositoryService;
 
     @Test
     void convert() throws Exception {
         when(urlRepository.findByUrl(anyString())).thenReturn(Optional.empty());
-        when(siteRepositoryService.findBySiteName(anyString())).thenReturn(Optional.of(new Site(1,
+        when(siteRepositoryService.findBySite(anyString())).thenReturn(Optional.of(new Site(1,
                 "https://job4j.ru",
                 "job4j",
                 "pass")));
@@ -49,7 +50,7 @@ class UrlControlTest {
                         "\"url\":\"https://job4j.ru/TrackStudio/task/8993?thisframe=true\"}"))
                 .andExpect(status().isOk());
         verify(urlRepository).save(any());
-        verify(siteRepositoryService).update(any());
+        verify(siteRepositoryService).save(any());
     }
 
     @Test
