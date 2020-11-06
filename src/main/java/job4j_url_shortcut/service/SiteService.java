@@ -89,9 +89,4 @@ public class SiteService implements Registration<Site, RegistrationData, String>
         }
         return result.toString();
     }
-
-    @Override
-    public Optional<Site> findBySiteName(String name) {
-        return repository.findBySite(name);
-    }
 }

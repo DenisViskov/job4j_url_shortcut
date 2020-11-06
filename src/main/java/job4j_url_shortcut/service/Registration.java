@@ -11,5 +11,4 @@ import java.util.Optional;
  */
 public interface Registration<V, K, T> extends Repository<V>, Randomizer<T> {
     K addSite(V some);
-    Optional<V> findBySiteName(String name);
 }
