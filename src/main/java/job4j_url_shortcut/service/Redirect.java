@@ -7,9 +7,8 @@ import java.util.Optional;
  *
  * @author Денис Висков
  * @version 1.0
- * @since 05.11.2020
+ * @since 06.11.2020
  */
-public interface SiteRepositoryService<V, K, T> extends RepositoryService<V>, Randomizer<T> {
-    K addSite(V some);
-    Optional<V> findBySiteName(String name);
+public interface Redirect<V> {
+    Optional<V> getRedirect(String code);
 }

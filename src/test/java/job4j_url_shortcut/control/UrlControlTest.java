@@ -4,24 +4,17 @@ import job4j_url_shortcut.Job4jUrlShortcutApplication;
 import job4j_url_shortcut.domain.Site;
 import job4j_url_shortcut.domain.Url;
 import job4j_url_shortcut.repository.UrlRepository;
-import job4j_url_shortcut.service.Randomizer;
-import job4j_url_shortcut.service.RepositoryService;
-import job4j_url_shortcut.service.SiteRepositoryService;
-import job4j_url_shortcut.service.SiteService;
+import job4j_url_shortcut.service.Registration;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.Collections;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
@@ -39,7 +32,7 @@ class UrlControlTest {
     @MockBean
     private UrlRepository urlRepository;
     @MockBean
-    private SiteRepositoryService siteRepositoryService;
+    private Registration siteRepositoryService;
 
     @Test
     void convert() throws Exception {

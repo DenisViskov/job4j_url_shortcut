@@ -2,8 +2,7 @@ package job4j_url_shortcut.control;
 
 import job4j_url_shortcut.domain.RegistrationData;
 import job4j_url_shortcut.domain.Site;
-import job4j_url_shortcut.service.RepositoryService;
-import job4j_url_shortcut.service.SiteRepositoryService;
+import job4j_url_shortcut.service.Registration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,10 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/registration")
 public class RegistrationControl {
-    private final SiteRepositoryService service;
+    private final Registration service;
 
     @Autowired
-    public RegistrationControl(SiteRepositoryService service) {
+    public RegistrationControl(Registration service) {
         this.service = service;
     }
 

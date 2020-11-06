@@ -14,4 +14,6 @@ import java.util.Optional;
  */
 public interface UrlRepository extends JpaRepository<Url, Integer> {
     Optional<Url> findByUrl(String url);
+
+    Optional<Url> findByCode(String code);
 }

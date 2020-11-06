@@ -1,7 +1,7 @@
 package job4j_url_shortcut.control;
 
 import job4j_url_shortcut.domain.Url;
-import job4j_url_shortcut.service.RepositoryService;
+import job4j_url_shortcut.service.Repository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/url")
 public class UrlControl {
-    private final RepositoryService service;
+    private final Repository service;
 
-    public UrlControl(@Qualifier("urlService") RepositoryService service) {
+    public UrlControl(@Qualifier("urlService") Repository service) {
         this.service = service;
     }
 

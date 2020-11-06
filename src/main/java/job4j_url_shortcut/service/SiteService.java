@@ -17,7 +17,7 @@ import java.util.Random;
  * @since 05.11.2020
  */
 @Service
-public class SiteService implements SiteRepositoryService<Site, RegistrationData, String> {
+public class SiteService implements Registration<Site, RegistrationData, String> {
     private final SiteRepository repository;
     private final PasswordEncoder encoder;
 

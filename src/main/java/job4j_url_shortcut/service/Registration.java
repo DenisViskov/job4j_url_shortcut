@@ -1,6 +1,5 @@
 package job4j_url_shortcut.service;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -10,14 +9,7 @@ import java.util.Optional;
  * @version 1.0
  * @since 05.11.2020
  */
-public interface RepositoryService<V> {
-    V add(V some);
-
-    boolean update(V some);
-
-    boolean delete(V some);
-
-    Optional<V> findById(int id);
-
-    List<V> findAll();
+public interface Registration<V, K, T> extends Repository<V>, Randomizer<T> {
+    K addSite(V some);
+    Optional<V> findBySiteName(String name);
 }

@@ -18,12 +18,12 @@ import java.util.Random;
  * @since 06.11.2020
  */
 @Service
-public class UrlService implements RepositoryService<Url>, Randomizer<String> {
+public class UrlService implements Repository<Url>, Randomizer<String> {
     private final UrlRepository urlRepository;
-    private final SiteRepositoryService siteRepositoryService;
+    private final Registration siteRepositoryService;
 
     @Autowired
-    public UrlService(UrlRepository urlRepository, SiteRepositoryService siteRepositoryService) {
+    public UrlService(UrlRepository urlRepository, Registration siteRepositoryService) {
         this.urlRepository = urlRepository;
         this.siteRepositoryService = siteRepositoryService;
     }
