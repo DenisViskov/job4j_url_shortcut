@@ -1,7 +1,9 @@
 package job4j_url_shortcut.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * @author Денис Висков
@@ -20,8 +22,11 @@ public class Site {
     private String login;
     @Column(name = "password")
     private String password;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Url> urls;
 
     public Site() {
+        urls = new HashSet<>();
     }
 
     public Site(int id, String site, String login, String password) {
@@ -29,6 +34,11 @@ public class Site {
         this.site = site;
         this.login = login;
         this.password = password;
+        urls = new HashSet<>();
+    }
+
+    public void addUrl(Url url) {
+        urls.add(url);
     }
 
     public int getId() {
@@ -63,6 +73,14 @@ public class Site {
         this.password = password;
     }
 
+    public Set<Url> getUrls() {
+        return urls;
+    }
+
+    public void setUrls(Set<Url> urls) {
+        this.urls = urls;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -71,11 +89,12 @@ public class Site {
         return id == site1.id &&
                 Objects.equals(site, site1.site) &&
                 Objects.equals(login, site1.login) &&
-                Objects.equals(password, site1.password);
+                Objects.equals(password, site1.password) &&
+                Objects.equals(urls, site1.urls);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, site, login, password);
+        return Objects.hash(id, site, login, password, urls);
     }
 }

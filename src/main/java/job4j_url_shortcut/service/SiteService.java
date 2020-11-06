@@ -17,7 +17,7 @@ import java.util.Random;
  * @since 05.11.2020
  */
 @Service
-public class SiteService implements SiteRepositoryService<Site, RegistrationData> {
+public class SiteService implements SiteRepositoryService<Site, RegistrationData, String> {
     private final SiteRepository repository;
     private final PasswordEncoder encoder;
 
@@ -88,5 +88,10 @@ public class SiteService implements SiteRepositoryService<Site, RegistrationData
             result.append(c);
         }
         return result.toString();
+    }
+
+    @Override
+    public Optional<Site> findBySiteName(String name) {
+        return repository.findBySite(name);
     }
 }
