@@ -1,7 +1,10 @@
 package job4j_url_shortcut.control;
 
 import job4j_url_shortcut.Job4jUrlShortcutApplication;
+import job4j_url_shortcut.domain.Url;
+import job4j_url_shortcut.repository.UrlRepository;
 import job4j_url_shortcut.service.Redirect;
+import job4j_url_shortcut.service.Statistic;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,14 +31,14 @@ class RedirectControlTest {
     @Autowired
     private MockMvc mockMvc;
     @MockBean
-    private Redirect service;
+    private UrlRepository repository;
 
     @Test
     void getUrl() throws Exception {
-        when(service.getRedirect(anyString())).thenReturn(Optional.of("someUrl"));
+        when(repository.findByCode(anyString())).thenReturn(Optional.of(new Url(0, "url", "asd", 1)));
         mockMvc.perform(get("/redirect/asdasfgh"))
                 .andExpect(content().contentType("text/plain;charset=UTF-8"))
-                .andExpect(content().string("someUrl"))
+                .andExpect(content().string("url"))
                 .andExpect(status().is3xxRedirection());
     }
 }
