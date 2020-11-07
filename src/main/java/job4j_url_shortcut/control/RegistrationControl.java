@@ -30,7 +30,7 @@ public class RegistrationControl {
     public ResponseEntity<RegistrationData> create(@RequestBody Site site) {
         RegistrationData result = (RegistrationData) service.addSite(site);
         return new ResponseEntity<>(result,
-                result.isRegistered() ? HttpStatus.FOUND : HttpStatus.CREATED
+                result.isRegistered() ?HttpStatus.CREATED  : HttpStatus.FOUND
         );
     }
 }
