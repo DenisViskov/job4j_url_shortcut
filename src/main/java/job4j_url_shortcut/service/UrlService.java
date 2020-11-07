@@ -51,12 +51,14 @@ public class UrlService implements Repository<Url>, Randomizer<String> {
             some.setTotal(url.getTotal());
         }, () -> {
             String siteName = nameImport(some.getUrl());
-            Site site = (Site) siteRepository.findBySite(siteName).get();
-            some.setId(0);
-            some.setCode(getRandom());
-            urlRepository.save(some);
-            site.addUrl(some);
-            siteRepository.save(site);
+            Optional<Site> siteBox = siteRepository.findBySite(siteName);
+            siteBox.ifPresent(site -> {
+                some.setId(0);
+                some.setCode(getRandom());
+                urlRepository.save(some);
+                site.addUrl(some);
+                siteRepository.save(site);
+            });
         });
         return some;
     }

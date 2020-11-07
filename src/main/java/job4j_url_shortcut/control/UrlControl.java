@@ -26,8 +26,9 @@ public class UrlControl {
 
     @PostMapping("/convert")
     public ResponseEntity<Url> convert(@RequestBody Url url) {
-        return new ResponseEntity<>((Url) service.add(url),
-                HttpStatus.OK
+        Url result = (Url) service.add(url);
+        return new ResponseEntity<>(result,
+                result.getCode() == null ? HttpStatus.NOT_FOUND : HttpStatus.OK
         );
     }
 }

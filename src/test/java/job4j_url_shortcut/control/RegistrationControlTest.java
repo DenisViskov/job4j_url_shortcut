@@ -42,6 +42,6 @@ class RegistrationControlTest {
         .content("{\"site\":\"job4j.ru\"}"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(content().json("{\"login\":null,\"password\":null,\"registered\":false}"))
-                .andExpect(status().isCreated());
+                .andExpect(status().isFound());
     }
 }
