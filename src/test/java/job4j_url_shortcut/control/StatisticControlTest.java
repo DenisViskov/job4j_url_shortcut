@@ -12,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -34,6 +35,7 @@ class StatisticControlTest {
     private SiteRepository siteRepository;
 
     @Test
+    @WithMockUser
     void getStats() throws Exception {
         Site site = new Site(0, "site", "login", "password");
         site.addUrl(new Url(0, "asdasd.ru", "asdad", 123));

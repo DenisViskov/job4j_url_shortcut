@@ -12,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Optional;
@@ -36,6 +37,7 @@ class UrlControlTest {
     private SiteRepository siteRepositoryService;
 
     @Test
+    @WithMockUser
     void convert() throws Exception {
         when(urlRepository.findByUrl(anyString())).thenReturn(Optional.empty());
         when(siteRepositoryService.findBySite(anyString())).thenReturn(Optional.of(new Site(1,
@@ -54,6 +56,7 @@ class UrlControlTest {
     }
 
     @Test
+    @WithMockUser
     void WhenWeHave() throws Exception {
         when(urlRepository.findByUrl(anyString())).thenReturn(Optional.of(new Url(0,"url","code",0)));
         mockMvc.perform(post("/url/convert")

@@ -14,4 +14,6 @@ import java.util.Optional;
  */
 public interface SiteRepository extends JpaRepository<Site, Integer> {
     Optional<Site> findBySite(String name);
+
+    Site findByLogin(String login);
 }
