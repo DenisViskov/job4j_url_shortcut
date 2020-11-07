@@ -63,8 +63,6 @@ public class StatisticService implements Statistic<StatisticData, Url> {
      */
     @Override
     public void incrementTotal(Url some) {
-        long total = some.getTotal();
-        some.setTotal(++total);
-        urlRepository.save(some);
+        urlRepository.incrementTotal(some.getId());
     }
 }
