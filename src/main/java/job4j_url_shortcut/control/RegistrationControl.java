@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * Class is a registration rest controller
+ *
  * @author Денис Висков
  * @version 1.0
  * @since 05.11.2020
@@ -19,6 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/registration")
 public class RegistrationControl {
+    /**
+     * Registration service
+     */
     private final Registration service;
 
     @Autowired
@@ -26,6 +31,13 @@ public class RegistrationControl {
         this.service = service;
     }
 
+    /**
+     * Executes creating new site and returns special object
+     * which encapsulations necessary data
+     *
+     * @param site
+     * @return RegistrationData
+     */
     @PostMapping("/")
     public ResponseEntity<RegistrationData> create(@RequestBody Site site) {
         RegistrationData result = (RegistrationData) service.addSite(site);

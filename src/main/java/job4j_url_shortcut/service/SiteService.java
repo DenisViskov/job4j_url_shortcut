@@ -12,13 +12,21 @@ import java.util.Optional;
 import java.util.Random;
 
 /**
+ * Class is a site service
+ *
  * @author Денис Висков
  * @version 1.0
  * @since 05.11.2020
  */
 @Service
 public class SiteService implements Registration<Site, RegistrationData, String> {
+    /**
+     * Site repository
+     */
     private final SiteRepository repository;
+    /**
+     * Password encoder
+     */
     private final PasswordEncoder encoder;
 
     @Autowired
@@ -27,11 +35,24 @@ public class SiteService implements Registration<Site, RegistrationData, String>
         this.encoder = encoder;
     }
 
+    /**
+     * Method add new site
+     *
+     * @param some
+     * @return Site
+     */
     @Override
     public Site add(Site some) {
         return repository.save(some);
     }
 
+    /**
+     * Method execute check by contain site in repository
+     * and return special object for answer
+     *
+     * @param some
+     * @return RegistrationData
+     */
     @Override
     public RegistrationData addSite(Site some) {
         Optional<Site> siteBox = repository.findBySite(some.getSite());
@@ -48,6 +69,12 @@ public class SiteService implements Registration<Site, RegistrationData, String>
         return result;
     }
 
+    /**
+     * Method execute update some in repository
+     *
+     * @param some
+     * @return boolean
+     */
     @Override
     public boolean update(Site some) {
         boolean result = false;
@@ -58,6 +85,12 @@ public class SiteService implements Registration<Site, RegistrationData, String>
         return result;
     }
 
+    /**
+     * Method execute delete some from repository
+     *
+     * @param some
+     * @return boolean
+     */
     @Override
     public boolean delete(Site some) {
         boolean result = false;
@@ -68,16 +101,32 @@ public class SiteService implements Registration<Site, RegistrationData, String>
         return result;
     }
 
+    /**
+     * Method return site by given id
+     *
+     * @param id
+     * @return Optional<Site>
+     */
     @Override
     public Optional<Site> findById(int id) {
         return repository.findById(id);
     }
 
+    /**
+     * Method return all sites from repository
+     *
+     * @return List<Site>
+     */
     @Override
     public List<Site> findAll() {
         return repository.findAll();
     }
 
+    /**
+     * Method generate random string
+     *
+     * @return String
+     */
     @Override
     public String getRandom() {
         char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();

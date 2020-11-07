@@ -14,13 +14,21 @@ import java.util.List;
 import java.util.Optional;
 
 /**
+ * Class is a statistic service
+ *
  * @author Денис Висков
  * @version 1.0
  * @since 06.11.2020
  */
 @Service
 public class StatisticService implements Statistic<StatisticData, Url> {
+    /**
+     * Site repository
+     */
     private final SiteRepository siteRepository;
+    /**
+     * Url repository
+     */
     private final UrlRepository urlRepository;
 
     @Autowired
@@ -29,6 +37,12 @@ public class StatisticService implements Statistic<StatisticData, Url> {
         this.urlRepository = urlRepository;
     }
 
+    /**
+     * Method returns statistic data by given site
+     *
+     * @param site
+     * @return List<StatisticData>
+     */
     @Override
     public List<StatisticData> getStats(String site) {
         Optional<Site> siteBox = siteRepository.findBySite(site);
@@ -42,6 +56,11 @@ public class StatisticService implements Statistic<StatisticData, Url> {
         return result;
     }
 
+    /**
+     * Method perform increment total calls by given url
+     *
+     * @param some
+     */
     @Override
     public void incrementTotal(Url some) {
         long total = some.getTotal();

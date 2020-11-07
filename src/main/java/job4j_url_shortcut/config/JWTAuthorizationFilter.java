@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import static job4j_url_shortcut.config.JWTAuthenticationFilter.*;
 
 /**
+ * Class is a JWT authorization filter
+ *
  * @author Денис Висков
  * @version 1.0
  * @since 07.11.2020

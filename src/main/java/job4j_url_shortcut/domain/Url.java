@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.util.Objects;
 
 /**
+ * Class is an entity URl
+ *
  * @author Денис Висков
  * @version 1.0
  * @since 06.11.2020
@@ -11,13 +13,25 @@ import java.util.Objects;
 @Entity
 @Table(name = "urls")
 public class Url {
+    /**
+     * Id
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    /**
+     * Url name
+     */
     @Column(name = "url")
     private String url;
+    /**
+     * Special unique code
+     */
     @Column(name = "code")
     private String code;
+    /**
+     * Total calls
+     */
     @Column(name = "total")
     private long total;
 

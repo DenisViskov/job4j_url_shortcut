@@ -3,13 +3,24 @@ package job4j_url_shortcut.domain;
 import java.util.Objects;
 
 /**
+ * Plain POJO class registration data
+ *
  * @author Денис Висков
  * @version 1.0
  * @since 05.11.2020
  */
 public class RegistrationData {
+    /**
+     * Login
+     */
     private String login;
+    /**
+     * Password
+     */
     private String password;
+    /**
+     * Is registered
+     */
     private boolean isRegistered;
 
     public RegistrationData(String login, String password, boolean isRegistered) {

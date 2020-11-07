@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
+ * Class is a statistic rest controller
+ *
  * @author Денис Висков
  * @version 1.0
  * @since 06.11.2020
@@ -16,6 +18,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/statistic")
 public class StatisticControl {
+    /**
+     * Statistic service
+     */
     private final Statistic service;
 
     @Autowired
@@ -23,6 +28,13 @@ public class StatisticControl {
         this.service = statistic;
     }
 
+    /**
+     * Taking text/plain string and returns special object
+     * which encapsulate necessary data
+     *
+     * @param site
+     * @return
+     */
     @GetMapping(value = "/", consumes = "text/plain", produces = "application/json")
     public List<StatisticData> getStats(@RequestParam String site) {
         return service.getStats(site);

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * Class is a url rest controller
+ *
  * @author Денис Висков
  * @version 1.0
  * @since 06.11.2020
@@ -18,12 +20,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/url")
 public class UrlControl {
+    /**
+     * Repository service
+     */
     private final Repository service;
 
     public UrlControl(@Qualifier("urlService") Repository service) {
         this.service = service;
     }
 
+    /**
+     * Takes url and sending him to service for execute convert
+     * Then returns ready url in quality answer
+     *
+     * @param url
+     * @return Url
+     */
     @PostMapping("/convert")
     public ResponseEntity<Url> convert(@RequestBody Url url) {
         Url result = (Url) service.add(url);

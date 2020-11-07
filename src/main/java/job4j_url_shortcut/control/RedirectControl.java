@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 /**
+ * Class is a redirect rest controller
+ *
  * @author Денис Висков
  * @version 1.0
  * @since 06.11.2020
@@ -19,6 +21,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/redirect")
 public class RedirectControl {
+    /**
+     * Redirect service
+     */
     private final Redirect service;
 
     @Autowired
@@ -26,6 +31,12 @@ public class RedirectControl {
         this.service = service;
     }
 
+    /**
+     * Returns originally URL by given code
+     *
+     * @param code
+     * @return String
+     */
     @GetMapping("/{code}")
     public ResponseEntity<String> getUrl(@PathVariable("code") String code) {
         Optional<String> redirect = service.getRedirect(code);

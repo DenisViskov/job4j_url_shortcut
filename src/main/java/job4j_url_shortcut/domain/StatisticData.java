@@ -3,12 +3,20 @@ package job4j_url_shortcut.domain;
 import java.util.Objects;
 
 /**
+ * Class is a plain POJO statistic data
+ *
  * @author Денис Висков
  * @version 1.0
  * @since 06.11.2020
  */
 public class StatisticData {
+    /**
+     * Url name
+     */
     private String url;
+    /**
+     * Total calls
+     */
     private long total;
 
     public StatisticData(String url, long total) {

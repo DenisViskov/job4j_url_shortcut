@@ -6,6 +6,8 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
+ * Class is an entity Site
+ *
  * @author Денис Висков
  * @version 1.0
  * @since 05.11.2020
@@ -13,15 +15,30 @@ import java.util.Set;
 @Entity
 @Table(name = "sites")
 public class Site {
+    /**
+     * Id
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    /**
+     * Site name
+     */
     @Column(name = "site")
     private String site;
+    /**
+     * Login
+     */
     @Column(name = "login")
     private String login;
+    /**
+     * Password
+     */
     @Column(name = "password")
     private String password;
+    /**
+     * Associated urls
+     */
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Url> urls;
 

@@ -21,15 +21,32 @@ import java.util.Date;
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 
 /**
+ * Class is a JWT authentication filter
+ *
  * @author Денис Висков
  * @version 1.0
  * @since 07.11.2020
  */
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+    /**
+     * Secret key
+     */
     public static final String SECRET = "SecretKeyToGenJWTs";
-    public static final long EXPIRATION_TIME = 864_000_000; /* 10 days */
+    /**
+     * Expired time  10 days
+     */
+    public static final long EXPIRATION_TIME = 864_000_000;
+    /**
+     * Token prefix
+     */
     public static final String TOKEN_PREFIX = "Bearer ";
+    /**
+     * Header name
+     */
     public static final String HEADER_STRING = "Authorization";
+    /**
+     * Sign Up url
+     */
     public static final String SIGN_UP_URL = "/registration/";
 
     private AuthenticationManager auth;

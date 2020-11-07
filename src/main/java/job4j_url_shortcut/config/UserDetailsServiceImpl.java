@@ -12,12 +12,17 @@ import org.springframework.stereotype.Service;
 import static java.util.Collections.emptyList;
 
 /**
+ * Class is an user detail service
+ *
  * @author Денис Висков
  * @version 1.0
  * @since 07.11.2020
  */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
+    /**
+     * Repository
+     */
     private final SiteRepository repository;
 
     @Autowired

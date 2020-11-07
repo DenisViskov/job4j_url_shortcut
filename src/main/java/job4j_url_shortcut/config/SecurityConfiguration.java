@@ -17,6 +17,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import static job4j_url_shortcut.config.JWTAuthenticationFilter.SIGN_UP_URL;
 
 /**
+ * Security config class
+ *
  * @author Денис Висков
  * @version 1.0
  * @since 05.11.2020
@@ -24,7 +26,13 @@ import static job4j_url_shortcut.config.JWTAuthenticationFilter.SIGN_UP_URL;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+    /**
+     * User detail service
+     */
     private UserDetailsServiceImpl userDetailsService;
+    /**
+     * Bcrypt password encoder
+     */
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
