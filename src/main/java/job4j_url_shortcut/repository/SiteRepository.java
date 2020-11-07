@@ -2,6 +2,7 @@ package job4j_url_shortcut.repository;
 
 import job4j_url_shortcut.domain.Site;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ import java.util.Optional;
  * @version 1.0
  * @since 05.11.2020
  */
+@Repository
 public interface SiteRepository extends JpaRepository<Site, Integer> {
     /**
      * Method should return site by given name
