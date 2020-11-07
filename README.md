@@ -6,3 +6,4 @@ Used technologies:<br>
 1.Maven as a build system<br>
 2.PostgreSQL with Hibernate as ORM<br>
 3.Spring framework(boot/Web/Security(JWT token)/Data)<br>
+[![Build Status](https://travis-ci.org/DenisViskov/job4j_url_shortcut.svg?branch=master)](https://travis-ci.org/DenisViskov/job4j_url_shortcut)
